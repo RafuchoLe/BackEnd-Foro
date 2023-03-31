@@ -3,6 +3,7 @@
 // Requires
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 // Ejecutar express
 const app = express();
@@ -12,6 +13,9 @@ const app = express();
 const user_routes = require('./routes/user');
 const topic_routes = require('./routes/topic');
 const comment_routes = require('./routes/comment');
+
+//Configuracion de cors
+app.use(cors());
 
 // Middleware
 app.use(bodyParser.urlencoded({extended:false}));
