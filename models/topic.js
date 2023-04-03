@@ -17,7 +17,7 @@ const Comment = mongoose.model('Comment', CommentSchema);
 //Modelo de TOPIC
 const TopicSchema = Schema({
     title:String,
-    constent: String,
+    content: String,
     code: String,
     lang: String,
     date: {type: Date, default: Date.now},
