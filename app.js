@@ -4,6 +4,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const helmet = require('helmet');
+const rateLimiter = require('express-rate-limit');
 
 // Ejecutar express
 const app = express();
@@ -13,7 +15,15 @@ const app = express();
 const user_routes = require('./routes/user');
 const topic_routes = require('./routes/topic');
 const comment_routes = require('./routes/comment');
-
+//configuraciones extras de seguridad
+app.user(helmet());
+app.set('trust proxy', 1);
+app.use(
+    rateLimiter({
+        windowMs:15*60*100, //15 minutes
+        max:100, // limit each IP 100 request per windowMs
+    })
+);
 //Configuracion de cors
 app.use(cors());
 
