@@ -16,7 +16,7 @@ const user_routes = require('./routes/user');
 const topic_routes = require('./routes/topic');
 const comment_routes = require('./routes/comment');
 //configuraciones extras de seguridad
-app.user(helmet());
+app.use(helmet());
 app.set('trust proxy', 1);
 app.use(
     rateLimiter({
